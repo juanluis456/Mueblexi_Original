@@ -1,45 +1,146 @@
-/* Estilos específicos para la página de Inicio */
-
-/* Centrar el contenido verticalmente */
-.content-center {
+/* Fondo degradado color madera (Roble cálido) */
+.login-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Esto pone el logo arriba y el form abajo */
+  align-items: center;
   justify-content: center;
-  min-height: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #8d6e63 0%, #4e342e 100%);
+  padding: 20px;
 }
 
-.main-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.sub-title {
-  font-size: 1.2rem;
-  color: #cccccc;
-  margin-bottom: 30px;
-}
-
-.card-title {
-  text-align: center;
-  font-size: 1.5rem;
-  margin-bottom: 25px;
-  font-weight: 600;
-}
-
-.login-button {
-  --border-radius: 8px;
-  font-weight: bold;
-  height: 50px;
-}
-
-.register-link {
-  color: #cccccc;
-  font-size: 0.9rem;
+/* === EL CUADRO ANIMADO BLANCO === */
+.animated-logo-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  animation: flotar 3s ease-in-out infinite;
   
-  a {
-    color: var(--ion-color-primary);
-    text-decoration: none;
-    font-weight: bold;
+  /* Le damos un tamaño exacto al cuadro */
+  width: 300px;
+  height: 120px; 
+  
+  /* El truco de magia para el CENTRADO ABSOLUTO (Vertical y Horizontal) */
+  display: flex;
+  align-items: center;      /* Lo centra de izquierda a derecha */
+  justify-content: center;  /* Lo centra de arriba a abajo */
+}
+
+/* === LA PALABRA MUEBLEXI === */
+.titulo-principal {
+  color: #3e2723;
+  font-weight: 800;
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 !important;  /* Quitamos cualquier margen que la empuje */
+  padding: 0 !important;
+}
+
+/* La animación que hace que suba y baje (se queda igual) */
+@keyframes flotar {
+  0% { transform: translateY(0px); }
+  50% { 
+    transform: translateY(-15px);
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.3);
   }
+  100% { transform: translateY(0px); }
+}
+
+.logo-icon {
+  font-size: 64px;
+  color: #5d4037;
+  margin-bottom: 10px;
+  display: block; /* Asegura que el ícono no se mueva de lado */
+}
+
+
+ h1 {
+  color: #3e2723 !important;
+  font-weight: 800 !important;
+  font-size: 2.5rem !important;
+  margin: 10px auto !important;   /* El important obliga a que se centre */
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  width: 100% !important;
+  text-align: center !important;  /* Fuerza el centrado del texto */
+  display: block !important;
+}
+
+/* Y por si acaso, también forcemos el subtítulo para que no empuje nada: */
+p {
+  color: #5d4037 !important;
+  font-weight: 100 !important;
+  margin: 0 auto !important;
+  font-size: 1.1rem !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+p {
+  color: #5d4037 !important;
+  font-weight: 600 !important;
+  margin: 0 auto !important;
+  font-size: 1.1rem !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+/* === EL CONTENEDOR DEL FORMULARIO === */
+.form-container {
+  width: 100%;
+  max-width: 350px; /* Ancho de las barras de texto */
+}
+
+/* Las barras de iniciar sesión y contraseña */
+/* Las barras de iniciar sesión y contraseña (AHORA BLANCAS) */
+.custom-input {
+  background: #ffffff !important;   /* Blanco puro y sólido */
+  --background: #ffffff !important; /* Esto le avisa a Ionic que el fondo es blanco */
+  border-radius: 15px;              /* Bordes redondeados y elegantes */
+  margin-bottom: 20px;              /* Espacio entre las barras */
+  --padding-start: 15px;            /* Espacio para que el icono no esté pegado al borde */
+  
+  /* Sombra suave para que las barras parezcan "flotar" sobre la madera */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+  
+  /* Quitamos cualquier línea de borde que ponga Ionic por defecto */
+  --inner-padding-end: 0;
+  --border-style: none;
+}
+
+/* Estilo para que el texto que escribe el usuario sea oscuro y se lea bien */
+ion-input {
+  --color: #3e2723 !important;      /* Color café muy oscuro para el texto */
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Link de registro hasta abajo */
+.footer-links {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.footer-links a {
+  color: #ffffff; /* Letras blancas para que se vean bien sobre el fondo de madera */
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombrita al texto */
+}
+/* === ESTILO PARA LOS LOGITOS MINIMALISTAS === */
+.input-icon {
+  color: #5d4037;       /* Un tono café oscuro para combinar */
+  font-size: 22px;      /* Tamaño sutil y elegante */
+  margin-right: 12px;   /* Un poco de espacio antes de empezar a escribir */
+  opacity: 0.7;         /* Transparencia para el efecto minimalista */
+  stroke-width: 30px;   /* Hace que la línea del dibujo sea más fina */
+}
+
+/* Y para asegurar que el texto que el usuario escribe también se vea bien: */
+ion-input {
+  color: #3e2723 !important;
+  font-weight: 500;
 }

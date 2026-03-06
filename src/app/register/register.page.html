@@ -1,50 +1,52 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar style="--background: transparent;">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" color="light"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="login-container">
 
-<ion-content [fullscreen]="true" class="ion-padding ion-text-center">
-  <div class="content-center">
-    
-    <h1 class="main-title">Crear Cuenta</h1>
-    <p class="sub-title">Únete a Mueblexi</p>
+    <div class="floating-box box-title">
+      <div class="titulo-principal">Crear Cuenta</div>
+    </div>
 
-    <div class="form-card">
-      <ion-item lines="none">
-        <ion-label position="floating">Nombre completo</ion-label>
-        <ion-input type="text" [(ngModel)]="userData.nombre"></ion-input>
+    <div class="floating-box box-subtitle">
+      <div class="sub-titulo">Únete a Mueblexi</div>
+    </div>
+
+    <div class="form-container">
+      <ion-item lines="none" class="custom-input">
+        <ion-icon name="person-outline" slot="start" class="input-icon"></ion-icon>
+        <ion-input type="text" placeholder="Nombre completo" [(ngModel)]="userData.nombre"></ion-input>
       </ion-item>
 
-      <ion-item lines="none">
-        <ion-label position="floating">Correo electrónico</ion-label>
-        <ion-input type="email" [(ngModel)]="userData.correo"></ion-input>
+      <ion-item lines="none" class="custom-input">
+        <ion-icon name="mail-outline" slot="start" class="input-icon"></ion-icon>
+        <ion-input type="text" placeholder="Usuario" [(ngModel)]="userData.username"></ion-input>
       </ion-item>
 
-      <ion-item lines="none">
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="userData.password"></ion-input>
+      <ion-item lines="none" class="custom-input">
+        <ion-icon name="lock-closed-outline" slot="start" class="input-icon"></ion-icon>
+        <ion-input type="password" placeholder="Contraseña" [(ngModel)]="userData.password"></ion-input>
       </ion-item>
 
-      <p class="role-label">¿Cómo quieres usar Mueblexi?</p>
-      <ion-segment [(ngModel)]="userData.rol" color="primary" class="role-segment ion-margin-bottom">
-        <ion-segment-button value="cliente">
-          <ion-label>Cliente</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="vendedor">
-          <ion-label>Vendedor</ion-label>
-        </ion-segment-button>
-      </ion-segment>
+      <div class="floating-box box-roles">
+        <ion-segment [(ngModel)]="userData.rol" class="role-segment">
+          
+          <ion-segment-button value="cliente">
+            <ion-icon name="people-outline"></ion-icon>
+            <ion-label>Cliente</ion-label>
+          </ion-segment-button>
 
-      <ion-button expand="block" color="primary" class="ion-margin-top register-button" (click)="register()">
+          <ion-segment-button value="vendedor">
+            <ion-icon name="cash-outline"></ion-icon>
+            <ion-label>Vendedor</ion-label>
+          </ion-segment-button>
+
+        </ion-segment>
+      </div>
+
+      <ion-button expand="block" class="login-button" (click)="register()">
         Registrarse
       </ion-button>
 
-      <div class="ion-text-center ion-margin-top login-link">
-        ¿Ya tienes cuenta? 
-        <a routerLink="/home">Inicia sesión</a>
+      <div class="footer-links">
+        <a (click)="goToLogin()">¿Ya tienes cuenta? Inicia sesión</a>
       </div>
     </div>
 

@@ -7,31 +7,23 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  // URL para registrar (CORREGIDA: Ahora dice 'register' para que coincida con Python)
-  private urlAPI = 'http://127.0.0.1:5001/api/register';
-  
-  // URL para iniciar sesión (Esta ya estaba bien)
-  private urlLogin = 'http://127.0.0.1:5001/api/login';
+  // Usamos una variable base para no repetir la dirección
+  private baseUrl = 'http://127.0.0.1:5001/api';
 
   constructor(private http: HttpClient) { }
 
-  // Función para registrar usuarios nuevos
-  registrarUsuario(usuario: any): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-    return this.http.post(this.urlAPI, usuario, httpOptions);
+  // 1. Función para iniciar sesión (Se usa desde Home)
+  loginUsuario(credenciales: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/login`, credenciales);
   }
 
-  // Función para iniciar sesión (Login)
-  loginUsuario(credenciales: any): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-    return this.http.post(this.urlLogin, credenciales, httpOptions);
+  // 2. Función para registrar usuarios (Se usa desde Register)
+  registrarUsuario(usuario: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/register`, usuario);
+  }
+
+  // 3. Función para traer los muebles (Para tu catálogo)
+  getMuebles(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/productos`);
   }
 }

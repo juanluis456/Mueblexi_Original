@@ -1,55 +1,137 @@
-/* Estilos específicos para la página de Registro */
-
-.content-center {
+/* Fondo degradado color madera (Roble cálido) */
+.login-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  min-height: calc(100% - 56px); /* Resta la altura del header */
+  min-height: 100vh;
+  background: linear-gradient(135deg, #8d6e63 0%, #4e342e 100%);
+  padding: 20px;
 }
 
-.main-title {
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.sub-title {
-  font-size: 1.1rem;
-  color: #cccccc;
+/* === EL MOLDE PARA LOS CUADROS FLOTANTES === */
+.floating-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
   margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 350px;
+  animation: flotar 3s ease-in-out infinite;
 }
 
-.role-label {
-  text-align: left;
-  color: #cccccc;
-  margin-bottom: 10px;
-  padding-left: 5px;
+/* Tamaños específicos para cada cuadro */
+.box-title { height: 75px; animation-delay: 0s; }
+.box-subtitle { height: 50px; margin-bottom: 30px; animation-delay: 0.5s; } /* Sube a destiempo */
+.box-roles { padding: 10px; margin-top: 10px; margin-bottom: 25px; animation-delay: 1s; }
+
+/* La animación que hace que suban y bajen */
+@keyframes flotar {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); box-shadow: 0 20px 30px rgba(0,0,0,0.3); }
+  100% { transform: translateY(0px); }
 }
 
-.role-segment {
-  --background: var(--mueblexi-input-background);
-  border-radius: 8px;
-  
-  ion-segment-button {
-    --color: #cccccc;
-    --color-checked: white;
-    --indicator-color: var(--ion-color-primary);
-  }
+/* === TEXTOS DE LOS CUADROS === */
+.titulo-principal {
+  color: #3e2723;
+  font-weight: 800;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-.register-button {
-  --border-radius: 8px;
+.sub-titulo {
+  color: #5d4037;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* === FORMULARIO BLANCO (Mismo que Login) === */
+.form-container { width: 100%; max-width: 350px; }
+
+.custom-input {
+  background: #ffffff !important;
+  --background: #ffffff !important;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  --padding-start: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --inner-padding-end: 0;
+  --border-style: none;
+}
+
+.input-icon {
+  color: #5d4037;
+  font-size: 22px;
+  margin-right: 12px;
+  opacity: 0.7;
+}
+
+ion-input {
+  --color: #3e2723 !important;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* === DISEÑO DE LOS BOTONES CLIENTE / VENDEDOR === */
+.role-segment { 
+  background: rgba(255, 255, 255, 0.9); /* Fondo blanco casi sólido para la barra completa */
+  border-radius: 15px;
+  padding: 5px;
+}
+
+/* Configuraciones de la barrita que se mueve */
+ion-segment-button {
+  /* AQUÍ ESTÁ EL CAMBIO: Un color café clarito/beige para el selector */
+  --indicator-color: #d7ccc8; 
+  --indicator-box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
   font-weight: bold;
-  height: 50px;
+  border-radius: 10px;
 }
 
-.login-link {
-  color: #cccccc;
-  font-size: 0.9rem;
-  
-  a {
-    color: var(--ion-color-primary);
-    text-decoration: none;
-    font-weight: bold;
-  }
+/* 1. LETRAS COLOR CAFÉ MADERA SIEMPRE */
+ion-segment-button ion-label {
+  color: #3e2723 !important; /* Café madera muy oscuro para que resalte sobre el beige */
+  font-size: 1rem;
 }
+
+/* 2. TAMAÑO DE LOS ÍCONOS */
+ion-segment-button ion-icon { 
+  font-size: 26px; 
+  margin-bottom: 5px; 
+}
+
+/* 3. COLORES ESTÁTICOS PARA LOS ÍCONOS */
+ion-segment-button[value="cliente"] ion-icon {
+  color: #0288d1 !important; /* Azul */
+}
+
+ion-segment-button[value="vendedor"] ion-icon {
+  color: #2e7d32 !important; /* Verde */
+}
+
+/* Vendedor: Siempre Verde */
+ion-segment-button[value="vendedor"] ion-icon {
+  color: #2e7d32 !important; 
+}
+/* === BOTON PRINCIPAL Y LINK === */
+.login-button {
+  --background: #3e2723;
+  --background-hover: #271815;
+  --border-radius: 12px;
+  margin-top: 10px;
+  height: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  --box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.footer-links { text-align: center; margin-top: 25px; }
+.footer-links a { color: #ffffff; font-size: 1.1rem; font-weight: 600; text-decoration: none; cursor: pointer; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }

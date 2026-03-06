@@ -1,52 +1,98 @@
-ion-content {
-  --background: var(--ion-background-color);
-}
-
-.product-card {
-  background-color: var(--mueblexi-card-background);
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  margin-bottom: 20px;
-  overflow: hidden; /* Para que la imagen respete el borde redondeado */
-}
-
-.image-container {
-  width: 100%;
-  height: 180px;
-  background-color: #555; /* Fondo mientras carga */
-  
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Asegura que la imagen llene el espacio sin deformarse */
-  }
-}
-
-.product-name {
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.price-container {
+/* Fondo degradado color madera (Roble cálido) */
+.login-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* Esto pone el logo arriba y el form abajo */
   align-items: center;
-  margin-bottom: 15px;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #8d6e63 0%, #4e342e 100%);
+  padding: 20px;
 }
 
-.price-label {
-  color: #bbbbbb;
-  font-size: 0.9rem;
+/* === EL CUADRO ANIMADO DEL LOGO === */
+.animated-logo-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px 50px;
+  border-radius: 25px;
+  text-align: center;
+  margin-bottom: 40px; /* Espacio para separar el cuadro de los inputs */
+  
+  /* Sombra pronunciada para el cuadro */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  
+  /* Aquí llamamos a la animación */
+  animation: flotar 3s ease-in-out infinite;
 }
 
-.price-value {
-  color: var(--ion-color-primary); /* Color Naranja/Marrón */
-  font-size: 1.3rem;
-  font-weight: bold;
+/* La animación que hace que suba y baje */
+@keyframes flotar {
+  0% { transform: translateY(0px); }
+  50% { 
+    transform: translateY(-15px); /* Sube un poco */
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.3); /* La sombra se hace más suave al subir */
+  }
+  100% { transform: translateY(0px); }
 }
 
-.detail-btn {
-  --border-radius: 8px;
+.logo-icon {
+  font-size: 64px;
+  color: #5d4037;
+  margin-bottom: 10px;
+}
+
+h1 {
+  color: #3e2723;
+  font-weight: 800;
+  font-size: 2.5rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+p {
+  color: #5d4037;
   font-weight: 600;
+  margin-top: 5px;
+  font-size: 1.1rem;
+}
+
+/* === EL CONTENEDOR DEL FORMULARIO === */
+.form-container {
+  width: 100%;
+  max-width: 350px; /* Ancho de las barras de texto */
+}
+
+/* Las barras de iniciar sesión y contraseña */
+.custom-input {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  margin-bottom: 15px;
+  --padding-start: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombrita para que resalten */
+}
+
+.login-button {
+  --background: #3e2723; /* Café muy oscuro */
+  --background-hover: #271815;
+  --border-radius: 12px;
+  margin-top: 25px;
+  height: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  --box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Link de registro hasta abajo */
+.footer-links {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.footer-links a {
+  color: #ffffff; /* Letras blancas para que se vean bien sobre el fondo de madera */
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombrita al texto */
 }
