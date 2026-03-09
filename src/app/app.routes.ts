@@ -17,5 +17,18 @@ export const routes: Routes = [
   {
     path: 'catalog',
     loadComponent: () => import('./catalog/catalog.page').then(m => m.CatalogPage),
+  },
+  // --- TUS PANTALLAS RECUPERADAS ---
+  {
+    path: 'detail-product',
+    loadComponent: () => import('./detail-product/detail-product.page').then( m => m.DetailProductPage)
+  },
+  {
+    path: 'register-payment',
+    loadComponent: () => import('./register-payment/register-payment.page').then( m => m.RegisterPaymentPage)
+  },
+  {
+    path: 'payment-history',
+    loadComponent: () => import('./payment-history/payment-history.page').then( m => m.PaymentHistoryPage)
   }
 ];
