@@ -1,46 +1,53 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonicModule, NavController } from '@ionic/angular'; // 1. Importamos NavController
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { 
+  IonHeader, IonToolbar, IonTitle, IonContent, 
+  IonButtons, IonBackButton, IonCard, IonCardContent,
+  IonItem, IonLabel, IonNote, IonIcon, IonCardHeader, IonCardTitle
+} from '@ionic/angular/standalone';
+
+import { DataService } from '../services/data';
 
 @Component({
   selector: 'app-payment-history',
   templateUrl: './payment-history.page.html',
   styleUrls: ['./payment-history.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterModule]
+  imports: [
+    CommonModule,
+    IonHeader, IonToolbar, IonTitle, IonContent, 
+    IonButtons, IonBackButton, IonCard, IonCardContent,
+    IonItem, IonLabel, IonNote, IonIcon, IonCardHeader, IonCardTitle
+  ]
 })
 export class PaymentHistoryPage implements OnInit {
-
-  productName: string = 'Cargando...';
   
-  payments = [
-    { date: '2024-02-01', amount: 500.00 },
-    { date: '2024-02-15', amount: 500.00 },
-    { date: '2024-03-01', amount: 600.00 },
-    { date: '2024-03-15', amount: 400.00 }
-  ];
+  producto: any; 
+  abonos: any[] = []; 
+  
+  // Nuevas variables para el RF-10
+  totalAbonado: number = 0;
+  saldoPendiente: number = 0;
 
-  totalPaid: number = 0;
-
-  // 2. Inyectamos NavController en lugar de Router para la navegación hacia atrás
   constructor(
-    private route: ActivatedRoute, 
-    private navCtrl: NavController
+    private route: ActivatedRoute,
+    private dataService: DataService
   ) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
+    const idParam = this.route.snapshot.paramMap.get('id');
+    const id = idParam ? parseInt(idParam, 10) : 0;
     
-    this.productName = 'Sofá Modular Gris'; 
+    this.producto = this.dataService.getProductoById(id);
+    this.abonos = this.dataService.getAbonosByProductoId(id);
 
-    this.totalPaid = this.payments.reduce((sum, current) => sum + current.amount, 0);
+    // Mates de Frontend: Calculamos cuánto ha pagado y cuánto debe
+    if (this.producto) {
+      // Sumamos todos los montos del arreglo de abonos
+      this.totalAbonado = this.abonos.reduce((suma, abono) => suma + abono.monto, 0);
+      // Restamos lo abonado al precio total
+      this.saldoPendiente = this.producto.precio_total - this.totalAbonado;
+    }
   }
-
-  goBack() {
-    // 3. Usamos la forma correcta de volver atrás en Ionic
-    this.navCtrl.back();
-  }
-
 }

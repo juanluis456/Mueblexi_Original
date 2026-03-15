@@ -20,7 +20,7 @@ export const routes: Routes = [
   },
   // --- TUS PANTALLAS RECUPERADAS ---
   {
-    path: 'detail-product',
+    path: 'detail-product/:id', // <--- Aquí agregamos el /:id
     loadComponent: () => import('./detail-product/detail-product.page').then( m => m.DetailProductPage)
   },
   {
@@ -30,5 +30,17 @@ export const routes: Routes = [
   {
     path: 'payment-history',
     loadComponent: () => import('./payment-history/payment-history.page').then( m => m.PaymentHistoryPage)
+  },
+  {
+    path: 'payment-history/:id', // <--- Solo agrégale el /:id aquí
+    loadComponent: () => import('./payment-history/payment-history.page').then( m => m.PaymentHistoryPage)
+  },  {
+    path: 'client-purchases',
+    loadComponent: () => import('./client-purchases/client-purchases.page').then( m => m.ClientPurchasesPage)
+  },
+  {
+    path: 'publish-product',
+    loadComponent: () => import('./publish-product/publish-product.page').then( m => m.PublishProductPage)
   }
+
 ];

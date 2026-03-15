@@ -1,74 +1,14 @@
-ion-content {
-  --background: var(--ion-background-color);
-}
-
-.content-center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: calc(100% - 60px);
-}
-
-.form-card {
-  background-color: var(--mueblexi-card-background);
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-}
-
-.info-section {
-  margin-bottom: 20px;
-}
-
-.info-label {
-  color: #bbbbbb;
-  font-size: 0.9rem;
-  margin-bottom: 2px;
-  margin-top: 15px;
-}
-
-.info-value {
+/* Oscurecemos el fondo del calendario emergente */
+ion-datetime {
+  --background: #2a2a2a;
+  --title-color: #ff7f00; 
   color: white;
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0;
 }
 
-.debt-value {
-  color: #e74c3c; /* Un rojo suave para indicar deuda */
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0;
-}
-
-.separator {
-  background: #555;
-  height: 1px;
-  border: none;
-  margin: 20px 0;
-}
-
-/* Estilos para los inputs personalizados */
-.input-item {
-  --background: var(--mueblexi-input-background);
-  --border-radius: 10px;
-  margin-bottom: 15px;
-  --color: white;
-
-  ion-label {
-    color: #cccccc !important;
-  }
-}
-
-.save-button {
-  --border-radius: 10px;
-  font-weight: bold;
-  height: 50px;
-  --box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
-}
-
-/* Ajuste para el botón de fecha */
-ion-datetime-button {
-  margin-top: 10px;
-  margin-bottom: 10px;
+/* Pintamos el botoncito que se ve en el formulario */
+ion-datetime-button::part(native) {
+  background: #3a3a3a;
+  color: white;
+  border-radius: 8px;
+  padding: 10px;
 }

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
 
-  // Nuestra base de datos simulada de Productos (Para el Catálogo)
+  // 1. Base de datos de Productos
   private productos = [
     {
       id_producto: 1,
@@ -37,15 +37,27 @@ export class DataService {
     }
   ];
 
+  // 2. Base de datos de Abonos (NUEVO)
+  private abonos = [
+    { id_abono: 101, id_producto: 1, fecha: '01/MAR/2026', monto: 1500.00 },
+    { id_abono: 102, id_producto: 1, fecha: '10/MAR/2026', monto: 1000.00 },
+    { id_abono: 103, id_producto: 2, fecha: '05/MAR/2026', monto: 2000.00 }
+  ];
+
   constructor() { }
 
-  // Función para enviar los productos al catálogo
+  // Funciones de Productos
   getProductos() {
     return this.productos;
   }
 
-  // Función para obtener un solo producto (Para la pantalla de detalles)
   getProductoById(id: number) {
     return this.productos.find(p => p.id_producto === id);
+  }
+
+  // Funciones de Abonos (NUEVO)
+  getAbonosByProductoId(idProducto: number) {
+    // Filtramos para que solo devuelva los pagos del mueble que estamos viendo
+    return this.abonos.filter(abono => abono.id_producto === idProducto);
   }
 }

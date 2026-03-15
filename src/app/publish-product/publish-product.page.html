@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar style="--background: #ff7f00; color: white;">
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: white;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="font-weight: bold;">Publicar Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #1e1e1e;" class="ion-padding">
+
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h2 style="font-weight: bold; color: #ffffff;">Nuevo Mueble</h2>
+    <p style="color: #bbbbbb;">Agrega un producto al catálogo de Mueblexi</p>
+  </div>
+
+  <ion-card style="background: #2a2a2a; border-radius: 15px; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+    <ion-card-content>
+      
+      <ion-item style="--background: transparent;" lines="full">
+        <ion-label position="stacked" style="font-weight: bold; color: #aaaaaa;">Nombre del Mueble</ion-label>
+        <ion-input type="text" placeholder="Ej. Comedor Vintage" [(ngModel)]="nombreProducto" style="color: #ffffff;"></ion-input>
+      </ion-item>
+
+      <ion-item style="--background: transparent;" lines="full">
+        <ion-label position="stacked" style="font-weight: bold; color: #aaaaaa;">Descripción</ion-label>
+        <ion-textarea placeholder="Escribe los detalles y materiales..." [(ngModel)]="descripcionProducto" style="color: #ffffff;" rows="3"></ion-textarea>
+      </ion-item>
+
+      <ion-item style="--background: transparent;" lines="full">
+        <ion-label position="stacked" style="font-weight: bold; color: #aaaaaa;">Precio de Venta ($)</ion-label>
+        <ion-input type="number" placeholder="0.00" [(ngModel)]="precioProducto" style="color: #2dd36f; font-weight: bold; font-size: 1.2rem;"></ion-input>
+      </ion-item>
+
+      <div style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
+        <ion-label style="font-weight: bold; color: #aaaaaa; display: block; margin-bottom: 10px;">Foto del Mueble</ion-label>
+        
+        <ion-button fill="outline" style="--color: #ff7f00; --border-color: #ff7f00;" (click)="tomarFoto()">
+          Tomar / Subir Foto
+        </ion-button>
+
+        <div *ngIf="imagenProducto" style="margin-top: 15px;">
+          <img [src]="imagenProducto" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; border: 2px solid #6a0dad;" />
+        </div>
+      </div>
+      <ion-button expand="block" class="ion-margin-top" style="--background: #6a0dad; margin-top: 20px; font-weight: bold; color: white;" (click)="publicarProducto()">
+        Publicar en Catálogo
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

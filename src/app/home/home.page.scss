@@ -1,146 +1,100 @@
-/* Fondo degradado color madera (Roble cálido) */
+/* 1. Fondo Dark Mode (En lugar de madera) */
 .login-container {
   display: flex;
-  flex-direction: column; /* Esto pone el logo arriba y el form abajo */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #8d6e63 0%, #4e342e 100%);
+  background: #1e1e1e; /* El negro profundo de tu catálogo */
   padding: 20px;
 }
 
-/* === EL CUADRO ANIMADO BLANCO === */
+/* 2. El Cuadro Animado (Ahora Naranja Mueblexi) */
 .animated-logo-box {
-  background: rgba(255, 255, 255, 0.95);
+  background: #ff7f00; /* Naranja vibrante */
   border-radius: 25px;
   margin-bottom: 40px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px rgba(255, 127, 0, 0.3); /* Sombra naranja sutil */
   animation: flotar 3s ease-in-out infinite;
   
-  /* Le damos un tamaño exacto al cuadro */
   width: 300px;
   height: 120px; 
-  
-  /* El truco de magia para el CENTRADO ABSOLUTO (Vertical y Horizontal) */
   display: flex;
-  align-items: center;      /* Lo centra de izquierda a derecha */
-  justify-content: center;  /* Lo centra de arriba a abajo */
+  align-items: center;
+  justify-content: center;
 }
 
-/* === LA PALABRA MUEBLEXI === */
+/* 3. La Palabra MUEBLEXI (Blanca sobre el naranja) */
 .titulo-principal {
-  color: #3e2723;
+  color: #ffffff;
   font-weight: 800;
   font-size: 2.8rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin: 0 !important;  /* Quitamos cualquier margen que la empuje */
+  margin: 0 !important;
   padding: 0 !important;
 }
 
-/* La animación que hace que suba y baje (se queda igual) */
+/* Tu animación original intacta */
 @keyframes flotar {
   0% { transform: translateY(0px); }
   50% { 
     transform: translateY(-15px);
-    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.5);
   }
   100% { transform: translateY(0px); }
 }
 
-.logo-icon {
-  font-size: 64px;
-  color: #5d4037;
-  margin-bottom: 10px;
-  display: block; /* Asegura que el ícono no se mueva de lado */
-}
-
-
- h1 {
-  color: #3e2723 !important;
-  font-weight: 800 !important;
-  font-size: 2.5rem !important;
-  margin: 10px auto !important;   /* El important obliga a que se centre */
-  text-transform: uppercase !important;
-  letter-spacing: 2px !important;
-  width: 100% !important;
-  text-align: center !important;  /* Fuerza el centrado del texto */
-  display: block !important;
-}
-
-/* Y por si acaso, también forcemos el subtítulo para que no empuje nada: */
-p {
-  color: #5d4037 !important;
-  font-weight: 100 !important;
-  margin: 0 auto !important;
-  font-size: 1.1rem !important;
-  text-align: center !important;
-  width: 100% !important;
-}
-
-p {
-  color: #5d4037 !important;
-  font-weight: 600 !important;
-  margin: 0 auto !important;
-  font-size: 1.1rem !important;
-  text-align: center !important;
-  width: 100% !important;
-}
-/* === EL CONTENEDOR DEL FORMULARIO === */
-.form-container {
-  width: 100%;
-  max-width: 350px; /* Ancho de las barras de texto */
-}
-
-/* Las barras de iniciar sesión y contraseña */
-/* Las barras de iniciar sesión y contraseña (AHORA BLANCAS) */
+/* 4. Barras de Input (Gris oscuro para resaltar del fondo) */
 .custom-input {
-  background: #ffffff !important;   /* Blanco puro y sólido */
-  --background: #ffffff !important; /* Esto le avisa a Ionic que el fondo es blanco */
-  border-radius: 15px;              /* Bordes redondeados y elegantes */
-  margin-bottom: 20px;              /* Espacio entre las barras */
-  --padding-start: 15px;            /* Espacio para que el icono no esté pegado al borde */
-  
-  /* Sombra suave para que las barras parezcan "flotar" sobre la madera */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
-  
-  /* Quitamos cualquier línea de borde que ponga Ionic por defecto */
+  background: #2a2a2a !important;   /* Gris oscuro "Card" */
+  --background: #2a2a2a !important; 
+  border-radius: 15px;
+  margin-bottom: 20px;
+  --padding-start: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
   --inner-padding-end: 0;
   --border-style: none;
 }
 
-/* Estilo para que el texto que escribe el usuario sea oscuro y se lea bien */
+/* Texto que escribe el usuario (Blanco) */
 ion-input {
-  --color: #3e2723 !important;      /* Color café muy oscuro para el texto */
+  --color: #ffffff !important; 
+  color: #ffffff !important;
   font-weight: 500;
   font-size: 1rem;
 }
 
-/* Link de registro hasta abajo */
+/* Iconos de las barras (Naranjas) */
+.input-icon {
+  color: #ff7f00; 
+  font-size: 22px;
+  margin-right: 12px;
+  opacity: 1; /* Le subimos la opacidad para que resalte el naranja */
+}
+
+/* 5. El Botón "Ingresar" (Morado Eléctrico) */
+.login-button {
+  --background: #6a0dad !important; /* Morado */
+  --color: white;
+  --border-radius: 15px;
+  font-weight: bold;
+  height: 55px;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  box-shadow: 0 8px 15px rgba(106, 13, 173, 0.3);
+}
+
+/* 6. Link de registro (Naranja para que resalte) */
 .footer-links {
   text-align: center;
   margin-top: 25px;
 }
 
 .footer-links a {
-  color: #ffffff; /* Letras blancas para que se vean bien sobre el fondo de madera */
-  font-size: 1.1rem;
+  color: #ff7f00; 
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombrita al texto */
-}
-/* === ESTILO PARA LOS LOGITOS MINIMALISTAS === */
-.input-icon {
-  color: #5d4037;       /* Un tono café oscuro para combinar */
-  font-size: 22px;      /* Tamaño sutil y elegante */
-  margin-right: 12px;   /* Un poco de espacio antes de empezar a escribir */
-  opacity: 0.7;         /* Transparencia para el efecto minimalista */
-  stroke-width: 30px;   /* Hace que la línea del dibujo sea más fina */
-}
-
-/* Y para asegurar que el texto que el usuario escribe también se vea bien: */
-ion-input {
-  color: #3e2723 !important;
-  font-weight: 500;
 }

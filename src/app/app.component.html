@@ -9,19 +9,37 @@
     <ion-content>
       <ion-list>
         <ion-menu-toggle auto-hide="false">
+          <ion-item-divider color="light">
+            <ion-label>VISTA CLIENTE</ion-label>
+          </ion-item-divider>
+
           <ion-item routerLink="/catalog" routerDirection="root" lines="none">
             <ion-icon slot="start" name="storefront-outline"></ion-icon>
             <ion-label>Catálogo de Muebles</ion-label>
           </ion-item>
 
-          <ion-item routerLink="/payment-history" routerDirection="root" lines="none">
+          <ion-item routerLink="/client-purchases" routerDirection="root" lines="none">
             <ion-icon slot="start" name="wallet-outline"></ion-icon>
             <ion-label>Mis Compras</ion-label>
           </ion-item>
 
-          <ion-item routerLink="/home" routerDirection="root" lines="none" style="margin-top: 20px;">
+          <ion-item-divider color="dark" style="margin-top: 15px;">
+            <ion-label>VISTA VENDEDOR</ion-label>
+          </ion-item-divider>
+
+          <ion-item routerLink="/register-payment" routerDirection="root" lines="none">
+            <ion-icon slot="start" name="cash-outline" color="success"></ion-icon>
+            <ion-label>Registrar Abono</ion-label>
+          </ion-item>
+          
+          <ion-item routerLink="/publish-product" routerDirection="root" lines="none">
+            <ion-icon slot="start" name="add-circle-outline" color="tertiary"></ion-icon>
+            <ion-label>Publicar Producto</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/home" routerDirection="root" lines="none" style="margin-top: 30px;">
             <ion-icon slot="start" name="log-out-outline" color="danger"></ion-icon>
-            <ion-label color="danger">Cerrar Sesión</ion-label>
+            <ion-label color="danger">Salir (Login)</ion-label>
           </ion-item>
         </ion-menu-toggle>
       </ion-list>

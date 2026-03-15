@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
-// 1. IMPORTAMOS LOS DIBUJITOS DE IONIC
+// 1. Importamos los componentes específicos de Ionic (Más ligero y moderno)
+import { 
+  IonContent, IonItem, IonInput, IonButton, IonIcon 
+} from '@ionic/angular/standalone';
+
+// 2. Importamos los dibujitos
 import { addIcons } from 'ionicons';
 import { personOutline, lockClosedOutline, hammerOutline } from 'ionicons/icons';
 
@@ -14,17 +18,28 @@ import { personOutline, lockClosedOutline, hammerOutline } from 'ionicons/icons'
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  // Aquí declaramos solo lo que el HTML necesita
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    IonContent, 
+    IonItem, 
+    IonInput, 
+    IonButton, 
+    IonIcon
+  ]
 })
 export class HomePage {
   username = '';
   password = '';
 
+  // Mantenemos la inyección de servicios de tu amigo intacta
   constructor(private router: Router, private apiService: ApiService) {
-    // 2. REGISTRAMOS LOS ÍCONOS PARA QUE LA PANTALLA LOS PUEDA DIBUJAR
+    // Registramos los íconos
     addIcons({ personOutline, lockClosedOutline, hammerOutline });
   }
 
+  // === LA LÓGICA DE TU AMIGO (SIN TOCAR) ===
   login() {
     if (!this.username || !this.password) {
       alert('Por favor, ingresa tu usuario y contraseña');

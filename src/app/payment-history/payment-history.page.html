@@ -1,45 +1,61 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar style="--background: var(--ion-background-color);">
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-button (click)="goBack()" color="light">
-        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
-      </ion-button>
+      <ion-back-button defaultHref="/client-purchases"></ion-back-button>
     </ion-buttons>
-    <ion-title style="color: white; font-weight: bold;">Historial de Pagos</ion-title>
+    <ion-title>Detalle de Saldo</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content class="ion-padding">
 
-  <div class="summary-card">
-    <h2>{{ productName }}</h2>
-    <p>Total Abonado:</p>
-    <div class="total-amount">${{ totalPaid | number:'1.2-2' }}</div>
+  <div *ngIf="producto" style="margin-bottom: 20px; text-align: center;">
+    <h3 style="color: #555; margin-top: 5px; font-weight: bold;">{{ producto.nombre }}</h3>
   </div>
 
-  <h3 class="section-title">Detalle de movimientos</h3>
-
-  <div class="history-list">
-    <div class="payment-item" *ngFor="let p of payments">
+  <ion-card *ngIf="producto" style="border-radius: 15px; margin-bottom: 25px; background: #f8f9fa; box-shadow: 0 4px 10px rgba(0,0,0,0.08);">
+    <ion-card-content>
+      <h2 style="text-align: center; color: #555; font-size: 1.1rem; margin-bottom: 5px;">Saldo Pendiente Total</h2>
       
-      <div class="payment-icon">
-        <ion-icon name="cash-outline"></ion-icon>
-      </div>
+      <h1 style="text-align: center; color: #eb445a; font-size: 2.5rem; font-weight: bold; margin-top: 0; margin-bottom: 20px;">
+        {{ saldoPendiente | currency:'MXN' }}
+      </h1>
 
-      <div class="payment-info">
-        <div class="payment-date">{{ p.date | date:'dd/MM/yyyy' }}</div>
-        <div class="payment-label">Abono realizado</div>
+      <div style="border-top: 1px solid #ddd; padding-top: 15px;">
+        <p style="display: flex; justify-content: space-between; font-size: 1rem; color: #555; margin-bottom: 8px;">
+          <span>Precio Total:</span> <strong>{{ producto.precio_total | currency:'MXN' }}</strong>
+        </p>
+        <p style="display: flex; justify-content: space-between; font-size: 1rem; color: #555; margin-bottom: 8px;">
+          <span>Total Abonado:</span> <strong style="color: #2dd36f;">- {{ totalAbonado | currency:'MXN' }}</strong>
+        </p>
+        <p style="display: flex; justify-content: space-between; font-size: 1.1rem; color: #333; font-weight: bold; margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 10px;">
+          <span>Restante a Pagar:</span> <span>{{ saldoPendiente | currency:'MXN' }}</span>
+        </p>
       </div>
+    </ion-card-content>
+  </ion-card>
 
-      <div class="payment-amount">
-        + ${{ p.amount | number:'1.2-2' }}
-      </div>
+  <h2 *ngIf="abonos && abonos.length > 0" style="font-weight: bold; color: #333; font-size: 1.2rem; margin-bottom: 15px;">Historial de pagos</h2>
 
-    </div>
+  <div *ngIf="abonos && abonos.length > 0">
+    <ion-card *ngFor="let abono of abonos" style="border-radius: 12px; margin-bottom: 15px; border-left: 6px solid #2dd36f; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+      <ion-card-content style="display: flex; justify-content: space-between; align-items: center; padding: 15px;">
+        <div>
+          <p style="font-size: 0.9rem; color: #888; margin: 0 0 5px 0;">Fecha:</p>
+          <h3 style="font-weight: bold; margin: 0; color: #333; font-size: 1.1rem;">{{ abono.fecha }}</h3>
+        </div>
+        <div style="text-align: right;">
+          <p style="font-size: 0.9rem; color: #888; margin: 0 0 5px 0;">Abonó:</p>
+          <h2 style="color: #2dd36f; font-weight: bold; margin: 0; font-size: 1.4rem;">
+            + {{ abono.monto | currency:'MXN' }}
+          </h2>
+        </div>
+      </ion-card-content>
+    </ion-card>
   </div>
 
-  <div *ngIf="payments.length === 0" class="ion-text-center ion-padding">
-    <p style="color: #888;">No hay abonos registrados aún.</p>
+  <div *ngIf="abonos && abonos.length === 0" style="text-align: center; margin-top: 30px;">
+    <h2 style="color: #888; font-weight: bold;">Sin abonos registrados 📭</h2>
   </div>
 
 </ion-content>

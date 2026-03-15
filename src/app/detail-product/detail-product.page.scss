@@ -1,22 +1,68 @@
-ion-content { --background: var(--ion-background-color); }
+/* Fondo principal de la página */
+ion-content {
+  --background: #1e1e1e; /* Negro Mueblexi */
+}
 
+/* El espacio de la imagen */
 .product-image {
   width: 100%;
-  height: 40vh;
-  img { width: 100%; height: 100%; object-fit: cover; }
+  height: 45vh; /* Le damos un poco más de altura para que luzca el mueble */
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Un degradado sutil para que no se vea cortado el naranja de arriba */
+    border-bottom: 2px solid #ff7f00; 
+  }
 }
 
+/* El contenedor que "sube" y tapa un poco la imagen */
 .detail-container {
-  background-color: var(--mueblexi-card-background);
-  min-height: 65vh;
+  background-color: #2a2a2a; /* Gris oscuro de nuestras tarjetas */
+  min-height: 60vh;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  margin-top: -30px;
+  margin-top: -35px; /* Sube un poco más para el efecto elegante */
   position: relative;
   padding: 30px 20px;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.5); /* Sombrita hacia arriba */
 }
 
-.product-title { font-size: 1.8rem; font-weight: 800; color: white; margin: 0; }
-.product-price { font-size: 1.5rem; color: var(--ion-color-primary); margin-top: 5px; }
-.description-section { color: #dddddd; margin-top: 20px; margin-bottom: 30px; }
-.history-btn { --border-radius: 12px; height: 50px; font-weight: bold; }
+/* Título en Blanco Puro */
+.product-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Precio en Verde Neón */
+.product-price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2dd36f; /* El verde de tu catálogo */
+  margin-top: 10px;
+}
+
+/* Texto de descripción en gris claro */
+.description-section {
+  color: #bbbbbb;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+
+/* Botón de comprar/apartar (Morado Eléctrico) */
+.history-btn {
+  --background: #6a0dad !important;
+  --color: white;
+  --border-radius: 15px;
+  height: 60px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 15px rgba(106, 13, 173, 0.3);
+}

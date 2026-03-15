@@ -1,33 +1,45 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 
-/* IMPORTAMOS LOS DIBUJITOS NUEVOS (Incluyendo billete y personas) */
+// 1. Agregamos IonSegment e IonSegmentButton aquí:
+import { 
+  IonHeader, IonToolbar, IonTitle, IonContent, 
+  IonItem, IonLabel, IonInput, IonButton, IonIcon, 
+  IonBackButton, IonButtons, IonSegment, IonSegmentButton 
+} from '@ionic/angular/standalone';
+
 import { addIcons } from 'ionicons';
-import { personOutline, lockClosedOutline, mailOutline, cashOutline, peopleOutline } from 'ionicons/icons';
+import { 
+  personOutline, lockClosedOutline, mailOutline, 
+  cashOutline, peopleOutline 
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [
+    CommonModule, FormsModule,
+    IonHeader, IonToolbar, IonTitle, IonContent, 
+    IonItem, IonLabel, IonInput, IonButton, IonIcon, 
+    IonBackButton, IonButtons, 
+    IonSegment, IonSegmentButton // <--- Y TAMBIÉN LOS AGREGAMOS AQUÍ
+  ]
 })
 export class RegisterPage {
   
-  // Cambiamos "correo" por "username" para que Python lo guarde bien
   userData = {
     nombre: '',
     username: '', 
     password: '',
-    rol: 'cliente' // Opción seleccionada por defecto
+    rol: 'cliente' 
   };
 
   constructor(private apiService: ApiService, private router: Router) {
-    // Registramos los íconos
     addIcons({ personOutline, lockClosedOutline, mailOutline, cashOutline, peopleOutline });
   }
 
@@ -37,11 +49,10 @@ export class RegisterPage {
       return;
     }
 
-    // Enviamos los datos a Python
     this.apiService.registrarUsuario(this.userData).subscribe({
       next: (res) => {
         alert('¡Registro exitoso! Ya puedes iniciar sesión.');
-        this.router.navigate(['/home']); // Te manda al login de madera
+        this.router.navigate(['/home']); 
       },
       error: (err) => {
         alert('Error al registrar: ' + (err.error.error || 'Problema con el servidor'));

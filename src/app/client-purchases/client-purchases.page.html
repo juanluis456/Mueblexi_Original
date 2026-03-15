@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mis Compras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div style="margin-bottom: 20px;">
+    <h2 style="font-weight: bold; color: #333;">Hola, Cliente 👋</h2>
+    <p style="color: #666; font-size: 1.1rem;">Estos son los muebles que tienes activos:</p>
+  </div>
+
+  <ion-card *ngFor="let compra of misCompras" style="border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    
+    <img [src]="compra.imagen" [alt]="compra.nombre" style="width: 100%; height: 150px; object-fit: cover;" />
+    
+    <ion-card-header>
+      <ion-card-title style="font-weight: bold; font-size: 1.2rem;">{{ compra.nombre }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p style="font-size: 1rem; color: #555; margin-bottom: 15px;">
+        Precio total: <span style="color: #2dd36f; font-weight: bold;">{{ compra.precio_total | currency:'MXN' }}</span>
+      </p>
+
+      <ion-button expand="block" color="warning" [routerLink]="['/payment-history', compra.id_producto]">
+        Ver historial y saldo
+      </ion-button>
+    </ion-card-content>
+
+  </ion-card>
+
+  <div *ngIf="misCompras.length === 0" style="text-align: center; margin-top: 50px;">
+    <h2 style="color: #888;">Aún no tienes compras</h2>
+    <ion-button color="primary" routerLink="/catalog" class="ion-margin-top">
+      Ir al catálogo
+    </ion-button>
+  </div>
+
+</ion-content>

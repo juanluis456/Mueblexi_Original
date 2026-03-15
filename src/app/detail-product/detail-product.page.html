@@ -1,39 +1,52 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar style="--background: transparent; position: absolute; top: 0; z-index: 10;">
+<ion-header>
+  <ion-toolbar style="--background: #ff7f00; color: white;">
     <ion-buttons slot="start">
-      <ion-button (click)="goBack()" style="--background: rgba(0,0,0,0.5); --border-radius: 50%; color: white;">
-        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
-      </ion-button>
+      <ion-back-button defaultHref="catalog" style="color: white;"></ion-back-button>
     </ion-buttons>
+    <ion-title style="font-weight: bold;">Detalle del Producto</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content style="--background: #1e1e1e;" class="ion-padding">
   
-  <div class="product-image">
-    <img [src]="product.image" alt="{{ product.name }}">
+  <div *ngIf="producto">
+    
+    <ion-card style="background: #2a2a2a; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.5); margin: 0; border: none;">
+      
+      <img [src]="producto.imagen" [alt]="producto.nombre" style="width: 100%; height: 300px; object-fit: cover; border-bottom: 2px solid #ff7f00;" />
+      
+      <ion-card-header>
+        <ion-card-title style="font-weight: bold; font-size: 1.8rem; color: #ffffff; margin-bottom: 10px;">
+          {{ producto.nombre }}
+        </ion-card-title>
+        
+        <h2 style="color: #2dd36f; font-weight: bold; font-size: 2.2rem; margin: 0;">
+          {{ producto.precio_total | currency:'MXN' }}
+        </h2>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p style="font-size: 1.1rem; color: #bbbbbb; line-height: 1.6; margin-bottom: 30px;">
+          {{ producto.descripcion }}
+        </p>
+
+        <ion-button expand="block" style="--background: #6a0dad; height: 55px; font-weight: bold; font-size: 1.1rem; --border-radius: 15px;">
+          <ion-icon name="cart-outline" slot="start"></ion-icon>
+          Apartar Producto
+        </ion-button>
+        
+      </ion-card-content>
+
+    </ion-card>
+    
   </div>
 
-  <div class="detail-container">
-    
-    <div class="header-info">
-      <h1 class="product-title">{{ product.name }}</h1>
-      <h2 class="product-price">${{ product.price | number:'1.2-2' }}</h2>
-    </div>
-
-    <div class="description-section">
-      <h3>Descripción</h3>
-      <p>{{ product.description }}</p>
-    </div>
-
-    <ion-button expand="block" color="primary" class="history-btn" (click)="viewHistory()">
-      Consultar Historial de Abonos
+  <div *ngIf="!producto" style="text-align: center; margin-top: 100px;">
+    <ion-icon name="search-outline" style="font-size: 80px; color: #444;"></ion-icon>
+    <h2 style="color: #888; font-weight: bold;">Buscando mueble...</h2>
+    <ion-button fill="clear" style="--color: #ff7f00;" routerLink="/catalog" class="ion-margin-top">
+      Volver al catálogo
     </ion-button>
-
-    <ion-button expand="block" color="danger" class="ion-margin-top" routerLink="/payment-history/1">
-      [TEST] Ir Directo al Historial
-    </ion-button>
-
   </div>
 
 </ion-content>

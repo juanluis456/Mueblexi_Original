@@ -1,20 +1,20 @@
-/* Fondo degradado color madera (Roble cálido) */
+/* 1. Fondo Dark Mode Mueblexi */
 .login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #8d6e63 0%, #4e342e 100%);
+  background: #1e1e1e; /* Negro profundo */
   padding: 20px;
 }
 
-/* === EL MOLDE PARA LOS CUADROS FLOTANTES === */
+/* === CUADROS FLOTANTES (Ahora Naranja Mueblexi) === */
 .floating-box {
-  background: rgba(255, 255, 255, 0.95);
+  background: #ff7f00; /* Naranja vibrante */
   border-radius: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 25px rgba(255, 127, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,115 +23,111 @@
   animation: flotar 3s ease-in-out infinite;
 }
 
-/* Tamaños específicos para cada cuadro */
-.box-title { height: 75px; animation-delay: 0s; }
-.box-subtitle { height: 50px; margin-bottom: 30px; animation-delay: 0.5s; } /* Sube a destiempo */
-.box-roles { padding: 10px; margin-top: 10px; margin-bottom: 25px; animation-delay: 1s; }
+/* El cuadro de roles lo pondremos oscuro para que resalte el selector */
+.box-roles { 
+  background: #2a2a2a; 
+  padding: 10px; 
+  margin-top: 10px; 
+  margin-bottom: 25px; 
+  animation-delay: 1s; 
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
 
-/* La animación que hace que suban y bajen */
+.box-title { height: 75px; animation-delay: 0s; }
+.box-subtitle { height: 50px; margin-bottom: 30px; animation-delay: 0.5s; }
+
+/* Animación original intacta */
 @keyframes flotar {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); box-shadow: 0 20px 30px rgba(0,0,0,0.3); }
   100% { transform: translateY(0px); }
 }
 
-/* === TEXTOS DE LOS CUADROS === */
+/* Textos blancos sobre el naranja */
 .titulo-principal {
-  color: #3e2723;
+  color: #ffffff;
   font-weight: 800;
   font-size: 2rem;
   text-transform: uppercase;
   margin: 0 !important;
-  padding: 0 !important;
 }
 
 .sub-titulo {
-  color: #5d4037;
+  color: #ffffff;
   font-weight: 600;
   font-size: 1.2rem;
   margin: 0 !important;
-  padding: 0 !important;
+  opacity: 0.9;
 }
 
-/* === FORMULARIO BLANCO (Mismo que Login) === */
+/* === FORMULARIO DARK (Mismo que Login) === */
 .form-container { width: 100%; max-width: 350px; }
 
 .custom-input {
-  background: #ffffff !important;
-  --background: #ffffff !important;
+  background: #2a2a2a !important;
+  --background: #2a2a2a !important;
   border-radius: 15px;
   margin-bottom: 15px;
   --padding-start: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   --inner-padding-end: 0;
   --border-style: none;
 }
 
 .input-icon {
-  color: #5d4037;
+  color: #ff7f00; /* Iconos naranjas */
   font-size: 22px;
   margin-right: 12px;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 ion-input {
-  --color: #3e2723 !important;
+  --color: #ffffff !important;
+  color: #ffffff !important;
   font-weight: 500;
   font-size: 1rem;
 }
 
-/* === DISEÑO DE LOS BOTONES CLIENTE / VENDEDOR === */
+/* === DISEÑO DE SEGMENTOS (Roles) === */
 .role-segment { 
-  background: rgba(255, 255, 255, 0.9); /* Fondo blanco casi sólido para la barra completa */
-  border-radius: 15px;
-  padding: 5px;
+  background: transparent; 
+  width: 100%;
 }
 
-/* Configuraciones de la barrita que se mueve */
 ion-segment-button {
-  /* AQUÍ ESTÁ EL CAMBIO: Un color café clarito/beige para el selector */
-  --indicator-color: #d7ccc8; 
-  --indicator-box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  --color: #aaaaaa; /* Letras grises cuando no están seleccionadas */
+  --color-checked: #ffffff; /* Letras blancas al seleccionar */
+  --indicator-color: #6a0dad; /* La barrita que se mueve ahora es MORADA */
+  --indicator-box-shadow: 0 2px 10px rgba(106, 13, 173, 0.5);
   font-weight: bold;
-  border-radius: 10px;
 }
 
-/* 1. LETRAS COLOR CAFÉ MADERA SIEMPRE */
 ion-segment-button ion-label {
-  color: #3e2723 !important; /* Café madera muy oscuro para que resalte sobre el beige */
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
 }
 
-/* 2. TAMAÑO DE LOS ÍCONOS */
-ion-segment-button ion-icon { 
-  font-size: 26px; 
-  margin-bottom: 5px; 
-}
+/* Íconos de roles (Colores brillantes para que resalten) */
+ion-segment-button[value="cliente"] ion-icon { color: #4da8da !important; }
+ion-segment-button[value="vendedor"] ion-icon { color: #2dd36f !important; }
 
-/* 3. COLORES ESTÁTICOS PARA LOS ÍCONOS */
-ion-segment-button[value="cliente"] ion-icon {
-  color: #0288d1 !important; /* Azul */
-}
-
-ion-segment-button[value="vendedor"] ion-icon {
-  color: #2e7d32 !important; /* Verde */
-}
-
-/* Vendedor: Siempre Verde */
-ion-segment-button[value="vendedor"] ion-icon {
-  color: #2e7d32 !important; 
-}
-/* === BOTON PRINCIPAL Y LINK === */
+/* === BOTÓN REGISTRARSE (Morado) === */
 .login-button {
-  --background: #3e2723;
-  --background-hover: #271815;
+  --background: #6a0dad !important;
+  --color: white;
   --border-radius: 12px;
   margin-top: 10px;
-  height: 50px;
+  height: 55px;
   font-weight: bold;
   font-size: 1.1rem;
-  --box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 15px rgba(106, 13, 173, 0.4);
 }
 
+/* Link de abajo (Naranja) */
 .footer-links { text-align: center; margin-top: 25px; }
-.footer-links a { color: #ffffff; font-size: 1.1rem; font-weight: 600; text-decoration: none; cursor: pointer; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+.footer-links a { 
+  color: #ff7f00; 
+  font-size: 1rem; 
+  font-weight: 600; 
+  text-decoration: none; 
+}
